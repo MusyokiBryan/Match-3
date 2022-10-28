@@ -3,7 +3,11 @@ guid: 5946ed1962435fb45955409e38ea942b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameBoard: {instanceID: 0}
+  - killedBoard: {instanceID: 0}
+  - nodePiece: {fileID: 9128246731919072194, guid: 008eef431d6219848a9a3bbf83c16107, type: 3}
+  - killedPiece: {fileID: 3158410123873588752, guid: 208850035172bc74aa14a7ed218f5f0a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
