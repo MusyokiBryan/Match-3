@@ -35,7 +35,7 @@ public class Match3 : MonoBehaviour
     void Update()
     {
         List<NodePiece> finishedUpdating = new List<NodePiece>();
-        for(int i = 0; i < update.Count; i++)
+        for (int i = 0; i < update.Count; i++)
         {
             NodePiece piece = update[i];
             if (!piece.UpdatePiece()) finishedUpdating.Add(piece);
@@ -119,7 +119,7 @@ public class Match3 : MonoBehaviour
                         int newVal = fillPiece();
                         NodePiece piece;
                         Point fallPnt = new Point(x, (-1 - fills[x]));
-                        if(dead.Count > 0)
+                        if (dead.Count > 0)
                         {
                             NodePiece revived = dead[0];
                             revived.gameObject.SetActive(true);
@@ -180,11 +180,11 @@ public class Match3 : MonoBehaviour
     void InitializeBoard()
     {
         board = new Node[width, height];
-        for(int y = 0; y < height; y++)
+        for (int y = 0; y < height; y++)
         {
-            for(int x = 0; x < width; x++)
+            for (int x = 0; x < width; x++)
             {
-                board[x, y] = new Node((boardLayout.rows[y].row[x]) ? - 1 : fillPiece(), new Point(x, y));
+                board[x, y] = new Node((boardLayout.rows[y].row[x]) ? -1 : fillPiece(), new Point(x, y));
             }
         }
     }
@@ -231,7 +231,7 @@ public class Match3 : MonoBehaviour
             }
         }
     }
-     
+
     public void ResetPiece(NodePiece piece)
     {
         piece.ResetPosition();
@@ -251,7 +251,7 @@ public class Match3 : MonoBehaviour
             nodeOne.SetPiece(pieceTwo);
             nodeTwo.SetPiece(pieceOne);
 
-            if(main)
+            if (main)
                 flipped.Add(new FlippedPieces(pieceOne, pieceTwo));
 
             update.Add(pieceOne);
@@ -294,16 +294,16 @@ public class Match3 : MonoBehaviour
             Point.down,
             Point.left
         };
-        
-        foreach(Point dir in directions) //Checking if there is 2 or more same shapes in the directions
+
+        foreach (Point dir in directions) //Checking if there is 2 or more same shapes in the directions
         {
             List<Point> line = new List<Point>();
 
             int same = 0;
-            for(int i = 1; i < 3; i++)
+            for (int i = 1; i < 3; i++)
             {
                 Point check = Point.add(p, Point.mult(dir, i));
-                if(getValueAtPoint(check) == val)
+                if (getValueAtPoint(check) == val)
                 {
                     line.Add(check);
                     same++;
@@ -314,7 +314,7 @@ public class Match3 : MonoBehaviour
                 AddPoints(ref connected, line); //Add these points to the overarching connected list
         }
 
-        for(int i = 0; i < 2; i++) //Checking if we are in the middle of two of the same shapes
+        for (int i = 0; i < 2; i++) //Checking if we are in the middle of two of the same shapes
         {
             List<Point> line = new List<Point>();
 
@@ -333,7 +333,7 @@ public class Match3 : MonoBehaviour
                 AddPoints(ref connected, line);
         }
 
-        for(int i = 0; i < 4; i++) //Check for a 2x2
+        for (int i = 0; i < 4; i++) //Check for a 2x2
         {
             List<Point> square = new List<Point>();
 
@@ -356,7 +356,7 @@ public class Match3 : MonoBehaviour
                 AddPoints(ref connected, square);
         }
 
-        if(main) //Checks for other matches along the current match
+        if (main) //Checks for other matches along the current match
         {
             for (int i = 0; i < connected.Count; i++)
                 AddPoints(ref connected, isConnected(connected[i], false));
@@ -372,12 +372,12 @@ public class Match3 : MonoBehaviour
 
     void AddPoints(ref List<Point> points, List<Point> add)
     {
-        foreach(Point p in add)
+        foreach (Point p in add)
         {
             bool doAdd = true;
-            for(int i = 0; i < points.Count; i++)
+            for (int i = 0; i < points.Count; i++)
             {
-                if(points[i].Equals(p))
+                if (points[i].Equals(p))
                 {
                     doAdd = false;
                     break;

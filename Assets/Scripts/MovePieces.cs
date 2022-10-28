@@ -23,7 +23,7 @@ public class MovePieces : MonoBehaviour
 
     void Update()
     {
-        if(moving != null)
+        if (moving != null)
         {
             Vector2 dir = ((Vector2)Input.mousePosition - mouseStart);
             Vector2 nDir = dir.normalized;
@@ -36,7 +36,7 @@ public class MovePieces : MonoBehaviour
                 //make add either (1, 0) | (-1, 0) | (0, 1) | (0, -1) depending on the direction of the mouse point
                 if (aDir.x > aDir.y)
                     add = (new Point((nDir.x > 0) ? 1 : -1, 0));
-                else if(aDir.y > aDir.x)
+                else if (aDir.y > aDir.x)
                     add = (new Point(0, (nDir.y > 0) ? -1 : 1));
             }
             newIndex.add(add);
